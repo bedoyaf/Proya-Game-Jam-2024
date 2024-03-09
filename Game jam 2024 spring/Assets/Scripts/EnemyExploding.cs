@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class EnemyExploding : EnemyDefault
 {
-    [SerializeField] Transform Target;
     [SerializeField] GameObject bombPrefab;
     [SerializeField] float bombPlantingDistance = 2f;
     [SerializeField] float safeDistance = 10f; // Distance to run away from player and bomb
@@ -20,6 +19,7 @@ public class EnemyExploding : EnemyDefault
     new void Start()
     {
         base.Start();
+        colour = "red";
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -28,43 +28,66 @@ public class EnemyExploding : EnemyDefault
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(explosionTimer);
-        // If bomb cooldown is over, reset the cooldown and plant a bomb
-        if (explosionTimer <= 0f)
+        //Debug.Log(explosionTimer);
+        if (!HasObstaclesInFrontOfEnemy())
         {
-            hasPlantedBomb = false; // Reset the bomb planting flag
-            explosionTimer = 0; // Reset the cooldown timer
+            isIdling = false;
+        }
+        if (isIdling)
+        {
+            agent.isStopped = true;
         }
         else
         {
-            explosionTimer -= Time.deltaTime; // Decrease the cooldown timer
-        }
-
-        // If bomb is not planted, approach the player
-        if (!hasPlantedBomb)
-        {
-            Debug.Log("KILL");
-            agent.SetDestination(Target.position);
-
-            // Check if the enemy is close enough to the player to plant the bomb
-            if (Vector3.Distance(transform.position, Target.position) <= bombPlantingDistance)
+            // If bomb cooldown is over, reset the cooldown and plant a bomb
+            if (explosionTimer <= 0f)
             {
-                hasPlantedBomb = true;
-                explosionTimer = explosionCooldown;
-                PlantBomb();
+                hasPlantedBomb = false; // Reset the bomb planting flag
+                explosionTimer = 0; // Reset the cooldown timer
             }
-        }
-        // If bomb is already planted, run away
-        else
-        {
-            Debug.Log("Run");
-            Vector3 directionToPlayer = (transform.position - Target.position).normalized;
-            Vector3 directionToBomb = (transform.position - lastBombPosition).normalized;
-            Vector3 safeDirection = (directionToPlayer + directionToBomb).normalized;
+            else
+            {
+                explosionTimer -= Time.deltaTime; // Decrease the cooldown timer
+            }
 
-            Vector3 targetPosition = transform.position + safeDirection * safeDistance;
-            agent.SetDestination(targetPosition);
-            Debug.Log(targetPosition);
+            // If bomb is not planted, approach the player
+            if (!hasPlantedBomb)
+            {
+                if (!HasObstaclesInFrontOfEnemy())
+                {
+                    isIdling = false;
+                }
+                if (isIdling)
+                {
+                    agent.isStopped = true;
+                }
+                else
+                {
+                    Debug.Log("KILL");
+                    agent.isStopped = false;
+                    agent.SetDestination(target.position);
+                }
+
+                // Check if the enemy is close enough to the player to plant the bomb
+                if (Vector3.Distance(transform.position, target.position) <= bombPlantingDistance)
+                {
+                    hasPlantedBomb = true;
+                    explosionTimer = explosionCooldown;
+                    PlantBomb();
+                }
+            }
+            // If bomb is already planted, run away
+            else
+            {
+                Debug.Log("Run");
+                Vector3 directionToPlayer = (transform.position - target.position).normalized;
+                Vector3 directionToBomb = (transform.position - lastBombPosition).normalized;
+                Vector3 safeDirection = (directionToPlayer + directionToBomb).normalized;
+
+                Vector3 targetPosition = transform.position + safeDirection * safeDistance;
+                agent.SetDestination(targetPosition);
+                Debug.Log(targetPosition);
+            }
         }
     }
 
@@ -78,8 +101,8 @@ public class EnemyExploding : EnemyDefault
     // Calculate the position to plant the bomb (adjacent to the player)
     Vector3 GetBombPosition()
     {
-        Vector3 directionToPlayer = (Target.position - transform.position).normalized;
-        Vector3 bombPosition = Target.position + directionToPlayer * -bombPlantingDistance;
+        Vector3 directionToPlayer = (target.position - transform.position).normalized;
+        Vector3 bombPosition = target.position + directionToPlayer * -bombPlantingDistance;
         return bombPosition;
     }
 }

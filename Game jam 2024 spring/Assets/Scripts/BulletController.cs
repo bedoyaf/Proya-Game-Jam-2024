@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour
@@ -9,6 +10,10 @@ public class BulletController : MonoBehaviour
     Vector3 originalPosition;
     public float despawnDistance = 10f;
     public Collider2D collider;
+    public GameObject owner;
+    public GameObject shootingEnemy;
+    public GameObject meleeEnemy;
+    public GameObject explosiveEnemy;
     void Start()
     {
     }
@@ -50,11 +55,33 @@ public class BulletController : MonoBehaviour
             // Check if the object has the EnemyDefault component
             if (enemy != null)
             {
+
+                int damageToDeal = 5;
+                if (enemy.colour == "red")
+                {
+                    damageToDeal = 20;
+                }
+                if ((enemy.currentHealth-damageToDeal)<=0)
+                {
+                    if (enemy.colour == "green")
+                    {
+                        GameController.Instance.AddPoints(2, 1);
+                    }
+                    else if (enemy.colour == "red")
+                    {
+                        GameController.Instance.AddPoints(3, 1);
+                    }
+                    else if (enemy.colour == "purple")
+                    {
+                        GameController.Instance.AddPoints(1, 1);
+                    }
+                }
+
                 // Call the TakeDamage method
-                enemy.TakeDamage(5);
+                enemy.TakeDamage(damageToDeal);
             }
 
-            // Destroy the bullet on collision with anything other than the Player layer
+
             Destroy(gameObject);
         }
     }

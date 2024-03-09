@@ -5,14 +5,13 @@ using UnityEngine.AI;
 
 public class EnemyMelee : EnemyDefault
 {
-    [SerializeField] Transform target;
-
     NavMeshAgent agent;
 
     // Start is called before the first frame update
     new void Start()
     {
         base.Start();
+        colour = "green";
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -21,6 +20,18 @@ public class EnemyMelee : EnemyDefault
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(target.position);
+        if (!HasObstaclesInFrontOfEnemy())
+        {
+            isIdling = false;
+        }
+        if (isIdling)
+        {
+            agent.isStopped = true;
+        }
+        else
+        {
+            agent.isStopped = false;
+            agent.SetDestination(target.position);
+        }
     }
 }

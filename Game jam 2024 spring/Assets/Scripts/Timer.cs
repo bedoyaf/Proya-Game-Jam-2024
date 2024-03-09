@@ -4,10 +4,21 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
-    [SerializeField] float remainingTime;
+    [SerializeField] float givenTime;
     [SerializeField] GameObject gameOverCanvas;
 
+    public float remainingTime;
     bool isGameOver = false;
+
+    private void Start()
+    {
+        ResetTimer();     
+    }
+
+    public void ResetTimer()
+    {
+        remainingTime = givenTime;
+    }
 
     void Update()
     {
@@ -40,5 +51,9 @@ public class Timer : MonoBehaviour
         // Set isGameOver flag to true to prevent further execution of Update() method
         isGameOver = true;
         gameOverCanvas.SetActive(true);
+    }
+    public void Add_to_remaining_time(float moretime)
+    {
+        remainingTime += moretime;
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine.AI;
 
 public class EnemyShooter : EnemyDefault
 {
-    [SerializeField] Transform target;
     [SerializeField] float shootingRange = 10f;
     [SerializeField] float shootingCooldown = 3f; // Cooldown time in seconds
 
@@ -17,6 +16,7 @@ public class EnemyShooter : EnemyDefault
     new void Start()
     {
         base.Start();
+        colour = "purple";
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -31,12 +31,20 @@ public class EnemyShooter : EnemyDefault
 
         if (distanceToTarget > shootingRange || hasObstacle)
         {
-            agent.isStopped = false;
-            agent.SetDestination(target.position);
+            if(isIdling) {
+                agent.isStopped = true;
+            }
+            else
+            {
+                agent.isStopped = false;
+                agent.SetDestination(target.position);
+            }
+
             isShooting = false;
         }
         else
         {
+            isIdling = false;
             agent.isStopped = true;
             isShooting = true;
         }
@@ -65,20 +73,4 @@ public class EnemyShooter : EnemyDefault
         bullet.GetComponent<EnemyBullet>().SetDirection(shootDirection, currentPosition, bulletSpeed);
     }
 
-    bool HasObstaclesInFrontOfEnemy()
-    {
-        Vector3 direction = (target.position - transform.position).normalized;
-        Vector3 currentPosition = transform.position;
-        currentPosition.z = 0;
-        direction.z = 0;
-        LayerMask layerMask = LayerMask.GetMask("Player", "Walls");
-        RaycastHit2D hit2D = Physics2D.Raycast(currentPosition, direction, 100, layerMask);
-
-        if (hit2D.collider != null && !hit2D.collider.CompareTag("Player"))
-        {
-            return true;
-        }
-
-        return false;
-    }
 }
