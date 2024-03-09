@@ -53,8 +53,19 @@ public class BombController : MonoBehaviour
             {
                 // Handle the object hit in the explosion (e.g., damage, destroy, etc.)
                 // Add your custom logic based on the hit object's type
-                if(hitCollider.gameObject !=gameObject && (/*hitCollider.CompareTag("Enemy")||*/ hitCollider.CompareTag("Player")))
+                if(hitCollider.gameObject !=gameObject && (hitCollider.CompareTag("Enemy")|| hitCollider.CompareTag("Player")))
                 {
+
+                    // ADD PLAYER DAMAGE 
+
+                    EnemyDefault enemy = hitCollider.gameObject.GetComponent<EnemyDefault>();
+
+                    // Check if the object has the EnemyDefault component
+                    if (enemy != null)
+                    {
+                        // Call the TakeDamage method
+                        enemy.TakeDamage(10);
+                    }
                     Debug.Log("Hit: " + hitCollider.gameObject.name);
                 }
             }

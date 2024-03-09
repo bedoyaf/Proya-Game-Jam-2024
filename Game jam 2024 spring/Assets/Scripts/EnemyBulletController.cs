@@ -47,10 +47,10 @@ public class EnemyBullet: MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer != LayerMask.NameToLayer(layerName))
-        {
+       if (collision.gameObject.layer != LayerMask.NameToLayer("Enemy") && collision.gameObject.layer != LayerMask.NameToLayer("Bullet"))
+       {
             // Destroy the bullet on collision with anything other than the Player layer
             Destroy(gameObject);
-        }
+       }
     }
 }

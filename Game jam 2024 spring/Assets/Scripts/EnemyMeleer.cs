@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class EnemyMelee : EnemyDefault
 {
     [SerializeField] Transform target;
 
     NavMeshAgent agent;
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
+        base.Start();
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;

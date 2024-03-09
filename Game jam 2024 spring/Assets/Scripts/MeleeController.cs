@@ -44,9 +44,18 @@ public class MeleeController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer != LayerMask.NameToLayer("Player"))
+        // Check if the collision is not with the Player or Bullet layer
+        if (collision.gameObject.layer != LayerMask.NameToLayer("Player") && collision.gameObject.layer != LayerMask.NameToLayer("Bullet"))
         {
-            // Destroy the bullet on collision with anything other than the Player layer
+            // Get the component that contains the TakeDamage method
+            EnemyDefault enemy = collision.gameObject.GetComponent<EnemyDefault>();
+
+            // Check if the object has the EnemyDefault component
+            if (enemy != null)
+            {
+                // Call the TakeDamage method
+                enemy.TakeDamage(5);
+            }
             Destroy(gameObject);
         }
     }
