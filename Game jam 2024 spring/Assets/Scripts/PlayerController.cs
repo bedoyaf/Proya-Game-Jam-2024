@@ -120,6 +120,7 @@ public class PlayerController : MonoBehaviour
 
             Vector2 meleeDirection = (mousePosition - transform.position).normalized;
 
+
             // Set the distance you want the melee object to be spawned from the player
             //float meleeDistance = 1.0f; // Adjust this value as needed
 

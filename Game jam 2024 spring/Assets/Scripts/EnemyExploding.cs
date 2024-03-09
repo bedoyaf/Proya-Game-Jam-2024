@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -88,9 +90,26 @@ public class EnemyExploding : EnemyDefault
                 agent.SetDestination(targetPosition);
                 Debug.Log(targetPosition);
             }
+            float diroflooking = -transform.position.x + target.position.x;
+            FlipSprite(diroflooking);
         }
     }
+    void FlipSprite(float horizontal)
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 
+        if (horizontal < 0)
+        {
+            // Moving left, flip the sprite
+            spriteRenderer.flipX = true;
+        }
+        else if (horizontal > 0)
+        {
+            // Moving right, restore the sprite to its original orientation
+            spriteRenderer.flipX = false;
+        }
+        // If horizontal is 0, the player is not moving left or right, so don't change the sprite orientation.
+    }
     // Plant the bomb at a position adjacent to the player
     void PlantBomb()
     {

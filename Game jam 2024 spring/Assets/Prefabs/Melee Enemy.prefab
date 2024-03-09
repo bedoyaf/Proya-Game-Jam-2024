@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 1316766094729526394}
   - component: {fileID: 5673420800151521467}
   - component: {fileID: 4324226289619539312}
+  - component: {fileID: -1853003066790406625}
   m_Layer: 8
   m_Name: Melee Enemy
   m_TagString: Enemy
@@ -106,7 +107,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.42, y: -3.52, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1693, y: 0.1693, z: 0.1693}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4503044447060307789}
@@ -153,9 +154,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 209042396, guid: 4eae56bc24488f447bd702a1d0e3c6ed, type: 3}
   m_Color: {r: 0.7735849, g: 0.7735849, b: 0.055951044, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -199,8 +200,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
+  colour: white
   healthBarSlider: {fileID: 524101838425557758}
-  target: {fileID: 0}
+  target: {fileID: 4286068518728577319, guid: 438ddb13e4defe64097dc558c5519b90, type: 3}
+  isIdling: 1
 --- !u!58 &5673420800151521467
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -235,7 +239,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 3
 --- !u!50 &4324226289619539312
 Rigidbody2D:
   serializedVersion: 4
@@ -263,6 +267,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &-1853003066790406625
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3281718176233817692}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 401feac8e3ba567438d220e72d8904d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5428537478304377444
 GameObject:
   m_ObjectHideFlags: 0

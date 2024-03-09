@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 2286510790773108689}
   - component: {fileID: 6570128021471759296}
   - component: {fileID: 2557050602004799559}
+  - component: {fileID: -1055086090533027646}
   m_Layer: 8
   m_Name: Shooting Enemy
   m_TagString: Enemy
@@ -120,7 +121,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.84, y: 1.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.21789387, y: 0.20532309, z: 0.4190267}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2725995003852861376}
@@ -167,7 +168,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 597937103, guid: 81391747d61168e4a885b0e61a2db2dc, type: 3}
   m_Color: {r: 0.8352941, g: 0.15294117, b: 0.8627451, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -232,9 +233,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.3}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 3
 --- !u!50 &6570128021471759296
 Rigidbody2D:
   serializedVersion: 4
@@ -275,12 +276,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
+  colour: white
   healthBarSlider: {fileID: 1290366946750440753}
-  target: {fileID: 0}
+  target: {fileID: 4286068518728577319, guid: 438ddb13e4defe64097dc558c5519b90, type: 3}
+  isIdling: 1
   shootingRange: 10
   shootingCooldown: 3
   rb: {fileID: 6570128021471759296}
   EnemyBulletPrefab: {fileID: 1443198765049680317, guid: 03fa490b1cb67e64a80a68c752d571fc, type: 3}
+--- !u!95 &-1055086090533027646
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7086444327232042381}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16aec559f937ddf448370707715137ee, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7288354375572141893
 GameObject:
   m_ObjectHideFlags: 0

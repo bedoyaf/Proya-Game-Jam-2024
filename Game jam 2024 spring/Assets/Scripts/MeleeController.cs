@@ -31,7 +31,11 @@ public class MeleeController : MonoBehaviour
     public void SetDirection(Vector2 direction, Vector3 _originalPosition, Vector3 newposition,float additionalbulletSpeed)
     {
 
+       // float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+     //   transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        angle += -90f;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         rb.transform.position = rb.transform.position+newposition*spawnDistance;
