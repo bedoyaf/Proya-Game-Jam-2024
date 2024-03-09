@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
+    public float health = 100;
+    public HealthBarController healthbar;
     public float speed = 5f;
     public Rigidbody2D rb;
     public GameObject bulletPrefab;
@@ -19,6 +22,8 @@ public class PlayerController : MonoBehaviour
         animator= GetComponent<Animator>();
 
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+
+        healthbar.SetHealth(health);
     }
     void Update()
     {
@@ -94,7 +99,7 @@ public class PlayerController : MonoBehaviour
         // Calculate the bullet speed by combining the bullet's speed and the player's speed
         // float dotProduct = Vector2.Dot(shootDirection, rb.velocity);
         float bulletSpeed = rb.velocity.magnitude;//*dotProduct;
-        Debug.Log(bulletSpeed);
+       // Debug.Log(bulletSpeed);
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         Vector3 currentPosition = transform.position;
 

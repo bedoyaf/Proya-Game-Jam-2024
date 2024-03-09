@@ -41,4 +41,8 @@ public class Timer : MonoBehaviour
         isGameOver = true;
         gameOverCanvas.SetActive(true);
     }
+    public void Add_to_remaining_time(float moretime)
+    {
+        remainingTime += moretime;
+    }
 }

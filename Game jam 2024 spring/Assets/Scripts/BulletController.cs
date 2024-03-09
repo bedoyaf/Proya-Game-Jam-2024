@@ -9,6 +9,10 @@ public class BulletController : MonoBehaviour
     Vector3 originalPosition;
     public float despawnDistance = 10f;
     public Collider2D collider;
+    public GameObject owner;
+    public GameObject purpleEnemy;
+    public GameObject greenEnemy;
+    public GameObject redEnemy;
     void Start()
     {
     }
@@ -43,6 +47,21 @@ public class BulletController : MonoBehaviour
     {
         if (collision.gameObject.layer != LayerMask.NameToLayer("Player"))
         {
+            if(collision.gameObject.tag=="Enemy")
+            {
+                if (collision.gameObject==greenEnemy)
+                {
+                    GameController.Instance.AddPoints(2,1);
+                }
+                else if (collision.gameObject == redEnemy)
+                {
+                    GameController.Instance.AddPoints(3, 1);
+                }
+                else if (collision.gameObject == greenEnemy)
+                {
+                    GameController.Instance.AddPoints(1, 1);
+                }
+            }
             // Destroy the bullet on collision with anything other than the Player layer
             Destroy(gameObject);
         }
