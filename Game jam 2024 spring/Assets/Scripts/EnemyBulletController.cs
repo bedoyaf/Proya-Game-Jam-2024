@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletController : MonoBehaviour
+public class EnemyBullet: MonoBehaviour
 {
     // Start is called before the first frame update
     public Rigidbody2D rb;
     Vector3 originalPosition;
     public float despawnDistance = 10f;
     public Collider2D collider;
+    public string layerName;
     void Start()
     {
     }
@@ -27,6 +28,11 @@ public class BulletController : MonoBehaviour
         // Debug.Log(speed);
     }
 
+    public void SetLayerName(string newLayerName)
+    {
+        layerName = newLayerName;
+    }
+
     public void SetDirection(Vector2 direction, Vector3 _originalPosition, float additionalbulletSpeed)
     {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -41,7 +47,7 @@ public class BulletController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer != LayerMask.NameToLayer("Player"))
+        if (collision.gameObject.layer != LayerMask.NameToLayer(layerName))
         {
             // Destroy the bullet on collision with anything other than the Player layer
             Destroy(gameObject);

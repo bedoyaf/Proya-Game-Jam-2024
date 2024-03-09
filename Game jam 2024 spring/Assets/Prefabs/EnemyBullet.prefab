@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 2189102171582518393}
   - component: {fileID: 914837465322341249}
   - component: {fileID: 8589034033587382257}
-  - component: {fileID: 8837848535741649269}
   - component: {fileID: 8306773536472821747}
+  - component: {fileID: 1462466024015908851}
   m_Layer: 7
-  m_Name: Bullet
+  m_Name: EnemyBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,22 +114,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8837848535741649269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1443198765049680317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41add5fa228ccfa4ba9e7eec405edd9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 8589034033587382257}
-  despawnDistance: 10
-  collider: {fileID: 0}
-  speed: 20
 --- !u!61 &8306773536472821747
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -175,3 +159,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.18, y: 5.93}
   m_EdgeRadius: 0
+--- !u!114 &1462466024015908851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443198765049680317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe72557017ce2364ca540694553bffdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 8589034033587382257}
+  despawnDistance: 10
+  collider: {fileID: 0}
+  layerName: Enemy
+  speed: 20
