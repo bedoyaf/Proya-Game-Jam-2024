@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -53,21 +55,41 @@ public class EnemyExploding : EnemyDefault
                 explosionTimer = explosionCooldown;
                 PlantBomb();
             }
+            float diroflooking = -transform.position.x + Target.position.x;
+            FlipSprite(diroflooking);
         }
         // If bomb is already planted, run away
         else
         {
-            Debug.Log("Run");
+            //  Debug.Log("Run");
             Vector3 directionToPlayer = (transform.position - Target.position).normalized;
             Vector3 directionToBomb = (transform.position - lastBombPosition).normalized;
             Vector3 safeDirection = (directionToPlayer + directionToBomb).normalized;
 
             Vector3 targetPosition = transform.position + safeDirection * safeDistance;
             agent.SetDestination(targetPosition);
-            Debug.Log(targetPosition);
+            //  Debug.Log(targetPosition);
+
+            float diroflooking=-transform.position.x + targetPosition.x;
+            FlipSprite(diroflooking);
         }
     }
+    void FlipSprite(float horizontal)
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 
+        if (horizontal < 0)
+        {
+            // Moving left, flip the sprite
+            spriteRenderer.flipX = true;
+        }
+        else if (horizontal > 0)
+        {
+            // Moving right, restore the sprite to its original orientation
+            spriteRenderer.flipX = false;
+        }
+        // If horizontal is 0, the player is not moving left or right, so don't change the sprite orientation.
+    }
     // Plant the bomb at a position adjacent to the player
     void PlantBomb()
     {
