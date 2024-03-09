@@ -1046,6 +1046,7 @@ MonoBehaviour:
   speed: 5
   rb: {fileID: 1249665120}
   bulletPrefab: {fileID: 1443198765049680317, guid: 33d3610d19d0e7942aa7125924f40dcc, type: 3}
+  meleePrefab: {fileID: 3749055278615734696, guid: 56dff48c8ae39ce48970f56227e3adc8, type: 3}
 --- !u!50 &1249665120
 Rigidbody2D:
   serializedVersion: 4

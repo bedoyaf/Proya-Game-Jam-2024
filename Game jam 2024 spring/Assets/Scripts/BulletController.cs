@@ -24,11 +24,14 @@ public class BulletController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Debug.Log(speed);
+       // Debug.Log(speed);
     }
   
     public void SetDirection(Vector2 direction, Vector3 _originalPosition, float additionalbulletSpeed)
     {
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
         direction = direction.normalized;
         speed += additionalbulletSpeed;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
