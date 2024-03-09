@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     public Rigidbody2D rb;
     public GameObject bulletPrefab;
+    public GameObject meleePrefab;
     void Start()
     {
         rb.freezeRotation = true;
@@ -27,6 +28,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire1")) // Change "Fire1" to your preferred input axis
         {
             Shoot();
+        }
+        if (Input.GetButtonDown("Fire2")) // Change "Fire1" to your preferred input axis
+        {
+            Melee();
         }
 
     }
@@ -68,5 +73,24 @@ public class PlayerController : MonoBehaviour
 
         // Set the bullet's direction and speed
         bullet.GetComponent<BulletController>().SetDirection(shootDirection, currentPosition, bulletSpeed);
+    }
+    void Melee()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        Vector2 meleeDirection = (mousePosition - transform.position).normalized;
+
+        // Set the distance you want the melee object to be spawned from the player
+        //float meleeDistance = 1.0f; // Adjust this value as needed
+
+        // Calculate the position where the melee object should be spawned
+        Vector3 spawnPosition = transform.position + new Vector3(meleeDirection.x, meleeDirection.y, 0f);//* meleeDistance;
+        float bulletSpeed = rb.velocity.magnitude;//*dotProduct;
+        // Instantiate the melee object at the calculated position
+        GameObject meleeObject = Instantiate(meleePrefab, transform.position, Quaternion.identity);
+        Vector3 currentPosition = transform.position;
+        // Set the direction and speed if your melee object has a script for that
+        meleeObject.GetComponent<MeleeController>().SetDirection(meleeDirection,currentPosition,meleeDirection,bulletSpeed);
     }
 }
