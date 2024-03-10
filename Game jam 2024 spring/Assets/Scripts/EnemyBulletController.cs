@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyBullet: MonoBehaviour
 {
     // Start is called before the first frame update
+    public AudioSource Sounrce;
+    public AudioClip shootclip;
     public Rigidbody2D rb;
     Vector3 originalPosition;
     public float despawnDistance = 10f;
@@ -12,6 +14,8 @@ public class EnemyBullet: MonoBehaviour
     public string layerName;
     void Start()
     {
+        Sounrce.clip = shootclip;
+        Sounrce.Play();
     }
 
     // Update is called once per frame

@@ -15,6 +15,8 @@ public class BombController : MonoBehaviour
     public float explosionTime = 2f;
     public float explosionRadius = 3f;
     public LayerMask explosionLayers;
+    public AudioSource Source;
+    public AudioClip BoomClip;
 
 
     private bool exploded=false;
@@ -38,6 +40,8 @@ public class BombController : MonoBehaviour
 
         collider.isTrigger = true;
         exploded = true;
+        Source.clip = BoomClip;
+        Source.Play();
        // yield return new WaitForSeconds(ExplosionFadeTime);
         // Destroy the bomb
         //Destroy(gameObject);
