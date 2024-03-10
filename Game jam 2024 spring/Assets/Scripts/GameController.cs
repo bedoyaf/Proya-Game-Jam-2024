@@ -13,9 +13,11 @@ public class GameController : MonoBehaviour
         Green=2,
         Red=3
     }
+    public RuntimeAnimatorController[] animatorControllers; //default,green,red, violet
+    public Animator playerAnimator;
     public Timer timer;
-    public int purplePoints = 0;
-    public int greenPoints = 0;
+    public int purplePoints = 4;
+    public int greenPoints = 4;
     public int redPoints = 4;
 
     public PlayerController player;
@@ -66,6 +68,7 @@ public class GameController : MonoBehaviour
         if (purplePoints >= 5 && player.colour != "purple")
         {
             player.colour = "purple";
+            playerAnimator.runtimeAnimatorController = animatorControllers[3];
             player.ChangeSpriteColor(Color.magenta);
             player.health = 100;
             purplePoints = 0;
@@ -75,6 +78,7 @@ public class GameController : MonoBehaviour
         if (greenPoints >= 5 && player.colour != "green")
         {
             player.colour = "green";
+            playerAnimator.runtimeAnimatorController = animatorControllers[1];
             player.ChangeSpriteColor(Color.green);
             player.health = 100;
             greenPoints = 0;
@@ -84,6 +88,7 @@ public class GameController : MonoBehaviour
         if (redPoints >= 5 && player.colour != "red")
         {
             player.colour = "red";
+            playerAnimator.runtimeAnimatorController = animatorControllers[1];
             player.ChangeSpriteColor(Color.red);
             player.health = 100;
             redPoints = 0;

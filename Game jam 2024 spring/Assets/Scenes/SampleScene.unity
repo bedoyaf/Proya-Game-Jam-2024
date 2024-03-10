@@ -10024,6 +10024,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa0886b1ac742654392c893f7acebef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animatorControllers:
+  - {fileID: 9100000, guid: adbb79f0104e3b14f9534bbcd8f24fe3, type: 2}
+  - {fileID: 9100000, guid: 510d9f1879f865d41ad422a35e41e060, type: 2}
+  - {fileID: 9100000, guid: 3360675a64f67af4cb41181b71cd285e, type: 2}
+  - {fileID: 9100000, guid: 0b728980cc4f2354bb9ea01724d0bb03, type: 2}
+  playerAnimator: {fileID: 1249665124}
   timer: {fileID: 838862210}
   purplePoints: 0
   greenPoints: 0
