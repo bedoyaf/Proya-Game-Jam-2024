@@ -204,9 +204,11 @@ MonoBehaviour:
   colour: white
   healthBarSlider: {fileID: 524101838425557758}
   target: {fileID: 4286068518728577319, guid: 438ddb13e4defe64097dc558c5519b90, type: 3}
+  spawnLocation: {x: 0, y: 0, z: 0}
   isIdling: 1
+  giveUpLength: 20
   attackingRange: 3
-  attackingCooldown: 0.5
+  attackingCooldown: 3
   rb: {fileID: 4324226289619539312}
   EnemyAttackPrefab: {fileID: 3749055278615734696, guid: 2e22e95235fd9cd4d981d59506ebc3dd, type: 3}
 --- !u!58 &5673420800151521467
