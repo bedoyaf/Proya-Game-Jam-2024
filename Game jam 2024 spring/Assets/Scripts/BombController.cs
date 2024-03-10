@@ -30,7 +30,7 @@ public class BombController : MonoBehaviour
     {
        // yield return new WaitForSeconds(explosionTime);
 
-        Debug.Log("exploduji");
+        //Debug.Log("exploduji");
         spriteRenderer.sprite = Explosion;
         float newScale = (explosionRadius * 2) / spriteRenderer.bounds.size.x;
         transform.localScale = new Vector3(newScale, newScale, 1f);
@@ -66,7 +66,7 @@ public class BombController : MonoBehaviour
                         // Call the TakeDamage method
                         enemy.TakeDamage(10);
                     }
-                    Debug.Log("Hit: " + hitCollider.gameObject.name);
+                  //  Debug.Log("Hit: " + hitCollider.gameObject.name);
                 }
             }
             // Perform fading or other actions based on elapsed time
