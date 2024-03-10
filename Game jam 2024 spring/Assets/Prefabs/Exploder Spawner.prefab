@@ -452,7 +452,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 57c3d117368b2634099dfa1afbdb4768, type: 3}
+  m_Sprite: {fileID: 334114645, guid: a69579bc253433e49a8fcfc129ab4f1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -480,6 +480,8 @@ MonoBehaviour:
   colour: white
   healthBarSlider: {fileID: 8290313411990631247}
   target: {fileID: 0}
+  spawnLocation: {x: 0, y: 0, z: 0}
   isIdling: 1
+  giveUpLength: 20
   enemyPrefab: {fileID: 4138891291494997452, guid: d78268de37ff02342b9102772d4066f5, type: 3}
   spawnInterval: 10
