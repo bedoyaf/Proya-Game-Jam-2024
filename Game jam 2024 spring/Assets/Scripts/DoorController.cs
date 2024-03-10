@@ -7,6 +7,7 @@ public class DoorController : MonoBehaviour
     // Start is called before the first frame update
     SpriteRenderer sr;
     Collider2D collider;
+    public Sprite opendoorSprite;
     void Start()
     {
         sr= GetComponent<SpriteRenderer>();
@@ -23,5 +24,6 @@ public class DoorController : MonoBehaviour
     {
         Debug.Log("opening door");
         collider.enabled= false;
+        sr.sprite= opendoorSprite;
     }
 }
