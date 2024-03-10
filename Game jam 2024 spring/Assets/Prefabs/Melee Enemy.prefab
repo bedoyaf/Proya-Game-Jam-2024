@@ -107,7 +107,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.42, y: -3.52, z: 0}
-  m_LocalScale: {x: 0.4523, y: 0.3891, z: 0.1693}
+  m_LocalScale: {x: 0.1693, y: 0.1693, z: 0.1693}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4503044447060307789}
@@ -203,10 +203,10 @@ MonoBehaviour:
   currentHealth: 0
   colour: white
   healthBarSlider: {fileID: 524101838425557758}
-  target: {fileID: 0}
+  target: {fileID: 4286068518728577319, guid: 438ddb13e4defe64097dc558c5519b90, type: 3}
   isIdling: 1
   attackingRange: 3
-  attackingCooldown: 1
+  attackingCooldown: 0.5
   rb: {fileID: 4324226289619539312}
   EnemyAttackPrefab: {fileID: 3749055278615734696, guid: 2e22e95235fd9cd4d981d59506ebc3dd, type: 3}
 --- !u!58 &5673420800151521467

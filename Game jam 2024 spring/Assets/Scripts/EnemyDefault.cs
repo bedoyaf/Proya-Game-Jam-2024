@@ -9,12 +9,15 @@ public class EnemyDefault : MonoBehaviour
     public string colour = "white";
     [SerializeField] protected Slider healthBarSlider;
     public Transform target;
+    public Vector3 spawnLocation;
     public bool isIdling = true;
+    public float giveUpLength = 20f;
 
     protected virtual void Start()
     {
+        target = FindObjectOfType<PlayerController>().transform;
         currentHealth = maxHealth;
-
+        spawnLocation = transform.position;
         UpdateHealthBar();
        // Debug.Log(healthBarSlider.value);
     }

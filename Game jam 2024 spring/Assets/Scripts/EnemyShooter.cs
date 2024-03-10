@@ -25,46 +25,54 @@ public class EnemyShooter : EnemyDefault
 
     void Update()
     {
-        bool hasObstacle = HasObstaclesInFrontOfEnemy();
-
-        if (!hasObstacle)
+        float distanceToTarget = Vector3.Distance(transform.position, target.position);
+        if (distanceToTarget > giveUpLength)
         {
-            isIdling = false;
-        }
-        if (isIdling)
-        {
-            agent.isStopped = true;
+            Debug.Log(spawnLocation);
+            agent.SetDestination(spawnLocation);
         }
         else
         {
+            bool hasObstacle = HasObstaclesInFrontOfEnemy();
 
-            float diroflooking = -transform.position.x + target.position.x;
-            FlipSprite(diroflooking);
-            float distanceToTarget = Vector3.Distance(transform.position, target.position);
-            // Debug.Log(hasObstacle);
-
-            if (distanceToTarget > shootingRange || hasObstacle)
+            if (!hasObstacle)
             {
-                agent.isStopped = false;
-                agent.SetDestination(target.position);
-                isShooting = false;
+                isIdling = false;
+            }
+            if (isIdling)
+            {
+                agent.isStopped = true;
             }
             else
             {
-                agent.isStopped = true;
-                isShooting = true;
-            }
 
-            if (isShooting)
-            {
-                if (shootTimer <= 0f)
+                float diroflooking = -transform.position.x + target.position.x;
+                FlipSprite(diroflooking);
+                // Debug.Log(hasObstacle);
+
+                if (distanceToTarget > shootingRange || hasObstacle)
                 {
-                    Shoot();
-                    shootTimer = shootingCooldown; // Reset the cooldown timer
+                    agent.isStopped = false;
+                    agent.SetDestination(target.position);
+                    isShooting = false;
                 }
                 else
                 {
-                    shootTimer -= Time.deltaTime; // Decrease the cooldown timer
+                    agent.isStopped = true;
+                    isShooting = true;
+                }
+
+                if (isShooting)
+                {
+                    if (shootTimer <= 0f)
+                    {
+                        Shoot();
+                        shootTimer = shootingCooldown; // Reset the cooldown timer
+                    }
+                    else
+                    {
+                        shootTimer -= Time.deltaTime; // Decrease the cooldown timer
+                    }
                 }
             }
         }

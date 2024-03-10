@@ -63,7 +63,7 @@ public class BulletController : MonoBehaviour
                 }
                 if ((enemy.currentHealth-damageToDeal)<=0)
                 {
-                    if (enemy.colour == "green")
+                    if (enemy.colour == "purple")
                     {
                         GameController.Instance.AddPoints(2, 1);
                     }
@@ -71,7 +71,7 @@ public class BulletController : MonoBehaviour
                     {
                         GameController.Instance.AddPoints(3, 1);
                     }
-                    else if (enemy.colour == "purple")
+                    else if (enemy.colour == "green")
                     {
                         GameController.Instance.AddPoints(1, 1);
                     }

@@ -71,8 +71,29 @@ public class BombController : MonoBehaviour
                     // Check if the object has the EnemyDefault component
                     if (enemy != null)
                     {
+                        int damageToDeal = 5;
+                        if (enemy.colour == "green")
+                        {
+                            damageToDeal = 20;
+                        }
+                        if ((enemy.currentHealth - damageToDeal) <= 0)
+                        {
+                            if (enemy.colour == "purple")
+                            {
+                                GameController.Instance.AddPoints(2, 1);
+                            }
+                            else if (enemy.colour == "red")
+                            {
+                                GameController.Instance.AddPoints(3, 1);
+                            }
+                            else if (enemy.colour == "green")
+                            {
+                                GameController.Instance.AddPoints(1, 1);
+                            }
+                        }
+
                         // Call the TakeDamage method
-                        enemy.TakeDamage(10);
+                        enemy.TakeDamage(damageToDeal);
                     }
                   //  Debug.Log("Hit: " + hitCollider.gameObject.name);
                 }
