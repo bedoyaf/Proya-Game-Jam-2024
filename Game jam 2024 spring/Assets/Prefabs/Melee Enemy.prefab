@@ -107,7 +107,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.42, y: -3.52, z: 0}
-  m_LocalScale: {x: 0.1693, y: 0.1693, z: 0.1693}
+  m_LocalScale: {x: 0.4523, y: 0.3891, z: 0.1693}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4503044447060307789}
@@ -203,12 +203,12 @@ MonoBehaviour:
   currentHealth: 0
   colour: white
   healthBarSlider: {fileID: 524101838425557758}
-  target: {fileID: 4286068518728577319, guid: 438ddb13e4defe64097dc558c5519b90, type: 3}
+  target: {fileID: 0}
   isIdling: 1
   attackingRange: 3
-  attackingCooldown: 3
+  attackingCooldown: 1
   rb: {fileID: 4324226289619539312}
-  EnemyBulletPrefab: {fileID: 3749055278615734696, guid: 2e22e95235fd9cd4d981d59506ebc3dd, type: 3}
+  EnemyAttackPrefab: {fileID: 3749055278615734696, guid: 2e22e95235fd9cd4d981d59506ebc3dd, type: 3}
 --- !u!58 &5673420800151521467
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -320,7 +320,7 @@ RectTransform:
   m_GameObject: {fileID: 5428537478304377444}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.005, y: 0.01, z: 0.099999994}
+  m_LocalScale: {x: 0.013664651, y: 0.027329301, z: 0.273293}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3074308740655035221}
@@ -328,7 +328,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.65}
+  m_AnchoredPosition: {x: 0, y: 4.31}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8768151779674871757
@@ -420,7 +420,7 @@ RectTransform:
   m_GameObject: {fileID: 6176213510581431904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.85269, y: 0.85269, z: 0.85269}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3143158970314947097}
