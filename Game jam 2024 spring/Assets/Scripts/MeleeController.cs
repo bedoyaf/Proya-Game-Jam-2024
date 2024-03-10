@@ -5,6 +5,8 @@ using UnityEngine;
 public class MeleeController : MonoBehaviour
 {
     // Start is called before the first frame update
+    public AudioSource Source;
+    public AudioClip MeleeClip;
     public Rigidbody2D rb;
     Vector3 originalPosition;
     public float despawnDistance = 5f;
@@ -13,6 +15,8 @@ public class MeleeController : MonoBehaviour
     public float spawnDistance=2f;
     void Start()
     {
+        Source.clip = MeleeClip;
+        Source.Play();
     }
 
     // Update is called once per frame
