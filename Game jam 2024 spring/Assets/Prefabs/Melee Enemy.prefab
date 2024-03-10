@@ -155,7 +155,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 209042396, guid: 4eae56bc24488f447bd702a1d0e3c6ed, type: 3}
-  m_Color: {r: 0.7735849, g: 0.7735849, b: 0.055951044, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
@@ -205,6 +205,10 @@ MonoBehaviour:
   healthBarSlider: {fileID: 524101838425557758}
   target: {fileID: 4286068518728577319, guid: 438ddb13e4defe64097dc558c5519b90, type: 3}
   isIdling: 1
+  attackingRange: 3
+  attackingCooldown: 3
+  rb: {fileID: 4324226289619539312}
+  EnemyBulletPrefab: {fileID: 3749055278615734696, guid: 2e22e95235fd9cd4d981d59506ebc3dd, type: 3}
 --- !u!58 &5673420800151521467
 CircleCollider2D:
   m_ObjectHideFlags: 0

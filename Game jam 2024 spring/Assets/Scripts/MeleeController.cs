@@ -9,6 +9,7 @@ public class MeleeController : MonoBehaviour
     Vector3 originalPosition;
     public float despawnDistance = 5f;
     public Collider2D collider;
+    public string layerOwner;
     public float spawnDistance=2f;
     void Start()
     {
@@ -48,19 +49,36 @@ public class MeleeController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("layer name" + collision.gameObject.layer);
         // Check if the collision is not with the Player or Bullet layer
-        if (collision.gameObject.layer != LayerMask.NameToLayer("Player") && collision.gameObject.layer != LayerMask.NameToLayer("Bullet"))
+        if (collision.gameObject.layer != LayerMask.NameToLayer(layerOwner) && collision.gameObject.layer != LayerMask.NameToLayer("Bullet"))
         {
-            // Get the component that contains the TakeDamage method
-            EnemyDefault enemy = collision.gameObject.GetComponent<EnemyDefault>();
-
-            // Check if the object has the EnemyDefault component
-            if (enemy != null)
+            if (layerOwner == "Enemy")
             {
-                // Call the TakeDamage method
-                enemy.TakeDamage(5);
+                Debug.Log("Its Enemy");
+                PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+
+                if (player != null)
+                {
+                    // Call the TakeDamage method
+                    player.TakeDamage(5);
+                }
+                Destroy(gameObject);
+                
             }
-            Destroy(gameObject);
+            else
+            {
+                // Get the component that contains the TakeDamage method
+                EnemyDefault enemy = collision.gameObject.GetComponent<EnemyDefault>();
+
+                // Check if the object has the EnemyDefault component
+                if (enemy != null)
+                {
+                    // Call the TakeDamage method
+                    enemy.TakeDamage(5);
+                }
+                Destroy(gameObject);
+            }
         }
     }
 }

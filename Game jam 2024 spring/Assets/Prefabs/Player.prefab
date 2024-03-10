@@ -127,11 +127,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fd0ee7f5144684bb7c9cb100fd1bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
+  healthbar: {fileID: 0}
   speed: 5
   rb: {fileID: 8536901230971156881}
   bulletPrefab: {fileID: 1443198765049680317, guid: 33d3610d19d0e7942aa7125924f40dcc, type: 3}
   meleePrefab: {fileID: 3749055278615734696, guid: 56dff48c8ae39ce48970f56227e3adc8, type: 3}
   bombPrefab: {fileID: 7692309770397346674, guid: 0436caf27fd07c843b8d202a8883b50d, type: 3}
+  spriteRenderer: {fileID: 0}
+  gameOverCanvas: {fileID: 8009121235995843865, guid: 73e3d78e3b189154d8d0372040ea758a, type: 3}
+  colour: 
 --- !u!61 &3346271657302741497
 BoxCollider2D:
   m_ObjectHideFlags: 0

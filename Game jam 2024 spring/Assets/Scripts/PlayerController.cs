@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public GameObject meleePrefab;
     public GameObject bombPrefab;
     public SpriteRenderer spriteRenderer;
+    [SerializeField] GameObject gameOverCanvas;
     Animator animator ;
     private bool idle=true;
     public string colour = string.Empty;
@@ -68,6 +69,20 @@ public class PlayerController : MonoBehaviour
             DropBomb();
         }
 
+    }
+
+    public void TakeDamage (int damage)
+    {
+        if (health - damage <= 0)
+        {
+            health = 0;
+            gameOverCanvas.SetActive(true);
+        }
+        else
+        {
+            health -= damage;
+        }
+        Debug.Log("Player:"+health);
     }
 
     void MovePlayer(Vector2 moveDirection)

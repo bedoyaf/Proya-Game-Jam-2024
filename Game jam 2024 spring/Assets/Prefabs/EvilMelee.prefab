@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2941501078283631813}
   - component: {fileID: 6297003715948736353}
   m_Layer: 7
-  m_Name: Melee
+  m_Name: EvilMelee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,8 +123,8 @@ MonoBehaviour:
   rb: {fileID: 6731544435924381971}
   despawnDistance: 2
   collider: {fileID: 3038892557172748221}
-  layerOwner: Player
-  spawnDistance: 4
+  layerOwner: Enemy
+  spawnDistance: 2.1
   speed: 5
 --- !u!212 &2941501078283631813
 SpriteRenderer:
@@ -193,6 +193,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   despawnDistance: 5
   collider: {fileID: 0}
-  layerOwner: Player
+  layerOwner: Enemy
   spawnDistance: 2
   speed: 9

@@ -6,48 +6,98 @@ using static UnityEngine.GraphicsBuffer;
 
 public class EnemyMelee : EnemyDefault
 {
-    NavMeshAgent agent;
+    [SerializeField] float attackingRange = 1f;
+    [SerializeField] float attackingCooldown = 1f; // Cooldown time in seconds
 
-    // Start is called before the first frame update
+    public Rigidbody2D rb;
+    public GameObject EnemyAttackPrefab;
+    NavMeshAgent agent;
+    bool isattacking = false;
+    float attackTimer = 0f;
+
     new void Start()
     {
         base.Start();
-        colour = "green";
+        colour = "purple";
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!HasObstaclesInFrontOfEnemy())
-        {
-            isIdling = false;
-        }
+        float diroflooking = -transform.position.x + target.position.x;
+        FlipSprite(diroflooking);
+        float distanceToTarget = Vector3.Distance(transform.position, target.position);
+
+        bool hasObstacle = HasObstaclesInFrontOfEnemy();
+        // Debug.Log(hasObstacle);
+
         if (isIdling)
         {
-            agent.isStopped = true;
+            if (hasObstacle)
+            {
+                agent.isStopped = true;
+            }
+            else
+            {
+                agent.isStopped = false;
+                agent.SetDestination(target.position);
+                isIdling = false;
+                isattacking = true;
+            }
         }
         else
         {
-            agent.isStopped = false;
-            agent.SetDestination(target.position);
+            if (distanceToTarget > attackingRange || hasObstacle)
+            {
+                agent.isStopped = false;
+                agent.SetDestination(target.position);
+                isIdling = false;
+                isattacking = false;
+            }
+            else
+            {
+                agent.isStopped = true;
+                isattacking = true;
+            }
         }
-        agent.SetDestination(target.position);
-        float diroflooking = -transform.position.x + target.position.x;
-        FlipSprite(diroflooking);
+
+        if (isattacking)
+        {
+            if (attackTimer <= 0f)
+            {
+                Attack();
+                attackTimer = attackingCooldown; // Reset the cooldown timer
+            }
+            else
+            {
+                attackTimer -= Time.deltaTime; // Decrease the cooldown timer
+            }
+        }
     }
+
+    void Attack()
+    {
+        Vector2 attackDirection = (target.position - transform.position).normalized;
+        float bulletSpeed = rb.velocity.magnitude;
+        Vector3 currentPosition = transform.position;
+        currentPosition.z = 0;
+        GameObject meleeObject = Instantiate(EnemyAttackPrefab, transform.position, Quaternion.identity);
+        // Set the direction and speed if your melee object has a script for that
+        meleeObject.GetComponent<MeleeController>().SetDirection(attackDirection, currentPosition, attackDirection, bulletSpeed);
+    }
+
     void FlipSprite(float horizontal)
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 
-        if (horizontal > 0)
+        if (horizontal < 0)
         {
             // Moving left, flip the sprite
             spriteRenderer.flipX = true;
         }
-        else if (horizontal < 0)
+        else if (horizontal > 0)
         {
             // Moving right, restore the sprite to its original orientation
             spriteRenderer.flipX = false;

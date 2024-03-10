@@ -30,20 +30,11 @@ public class EnemyExploding : EnemyDefault
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(explosionTimer);
-        if (!HasObstaclesInFrontOfEnemy())
-        {
-            isIdling = false;
-        }
-        if (isIdling)
-        {
-            agent.isStopped = true;
-        }
-        else
-        {
+
             // If bomb cooldown is over, reset the cooldown and plant a bomb
             if (explosionTimer <= 0f)
             {
+                //Debug.Log("bombcooldown over");
                 hasPlantedBomb = false; // Reset the bomb planting flag
                 explosionTimer = 0; // Reset the cooldown timer
             }
@@ -65,7 +56,7 @@ public class EnemyExploding : EnemyDefault
                 }
                 else
                 {
-                    Debug.Log("KILL");
+                    //Debug.Log("KILL "+ target.position);
                     agent.isStopped = false;
                     agent.SetDestination(target.position);
                 }
@@ -81,18 +72,18 @@ public class EnemyExploding : EnemyDefault
             // If bomb is already planted, run away
             else
             {
-                Debug.Log("Run");
+                //Debug.Log("Run");
                 Vector3 directionToPlayer = (transform.position - target.position).normalized;
                 Vector3 directionToBomb = (transform.position - lastBombPosition).normalized;
                 Vector3 safeDirection = (directionToPlayer + directionToBomb).normalized;
 
                 Vector3 targetPosition = transform.position + safeDirection * safeDistance;
                 agent.SetDestination(targetPosition);
-                Debug.Log(targetPosition);
+                //Debug.Log(targetPosition);
             }
             float diroflooking = -transform.position.x + target.position.x;
             FlipSprite(diroflooking);
-        }
+        
     }
     void FlipSprite(float horizontal)
     {
