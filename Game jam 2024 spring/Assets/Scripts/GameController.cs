@@ -67,6 +67,7 @@ public class GameController : MonoBehaviour
         {
             player.colour = "purple";
             player.ChangeSpriteColor(Color.magenta);
+            player.health = 100;
             purplePoints = 0;
             timer.ResetTimer();
             scoreManager.UpdateScoreUI(purplePoints, greenPoints, redPoints);
@@ -75,6 +76,7 @@ public class GameController : MonoBehaviour
         {
             player.colour = "green";
             player.ChangeSpriteColor(Color.green);
+            player.health = 100;
             greenPoints = 0;
             timer.ResetTimer();
             scoreManager.UpdateScoreUI(purplePoints, greenPoints, redPoints);
@@ -83,6 +85,7 @@ public class GameController : MonoBehaviour
         {
             player.colour = "red";
             player.ChangeSpriteColor(Color.red);
+            player.health = 100;
             redPoints = 0;
             timer.ResetTimer();
             scoreManager.UpdateScoreUI(purplePoints, greenPoints, redPoints);

@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject gameOverCanvas;
     Animator animator ;
     private bool idle=true;
+    private bool showMenu = false;
     public string colour = string.Empty;
 
     public float delayBetweenShots = 0.5f; // Adjust this value to set the delay between shots
@@ -89,13 +90,32 @@ public class PlayerController : MonoBehaviour
                 lastShotTime = Time.time;
             }
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("im here");
+            showMenu = !showMenu;
+            gameOverCanvas.SetActive(showMenu);
+            foreach (Transform child in gameOverCanvas.transform)
+            {
+                if (child.name != "GameOverText")
+                {
+                    child.gameObject.SetActive(showMenu);
+                }
+            }
+            
+        }
+    }
 
+    protected virtual void Die()
+    {
+        Destroy(gameObject);
     }
 
     public void TakeDamage (int damage)
     {
         if (health - damage <= 0)
         {
+            Die();
             health = 0;
             gameOverCanvas.SetActive(true);
         }

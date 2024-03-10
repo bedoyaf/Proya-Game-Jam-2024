@@ -18,7 +18,7 @@ public class EnemyMelee : EnemyDefault
     new void Start()
     {
         base.Start();
-        colour = "purple";
+        colour = "green";
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;

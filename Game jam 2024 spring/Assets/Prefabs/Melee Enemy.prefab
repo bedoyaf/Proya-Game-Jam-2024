@@ -206,7 +206,7 @@ MonoBehaviour:
   target: {fileID: 4286068518728577319, guid: 438ddb13e4defe64097dc558c5519b90, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   isIdling: 1
-  giveUpLength: 20
+  giveUpLength: 14
   attackingRange: 3
   attackingCooldown: 3
   rb: {fileID: 4324226289619539312}

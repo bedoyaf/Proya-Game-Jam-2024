@@ -280,7 +280,9 @@ MonoBehaviour:
   colour: white
   healthBarSlider: {fileID: 1290366946750440753}
   target: {fileID: 4286068518728577319, guid: 438ddb13e4defe64097dc558c5519b90, type: 3}
+  spawnLocation: {x: 0, y: 0, z: 0}
   isIdling: 1
+  giveUpLength: 14
   shootingRange: 10
   shootingCooldown: 3
   rb: {fileID: 6570128021471759296}

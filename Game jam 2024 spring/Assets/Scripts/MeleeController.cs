@@ -48,7 +48,7 @@ public class MeleeController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Debug.Log("Trigger entered?");
+        //Debug.Log("Trigger entered?");
         // Debug.Log("layer name" + other.gameObject.layer);
 
         // Check if the trigger is not with the Player or Bullet layer
@@ -75,15 +75,15 @@ public class MeleeController : MonoBehaviour
                 // Check if the object has the EnemyDefault component
                 if (enemy != null)
                 {
-                    int damageToDeal = 5;
+                    //Debug.Log("I shot enemy and I'm a player");
+                    int damageToDeal = 8;
                     if (enemy.colour == "purple")
                     {
-                        damageToDeal = 20;
+                        damageToDeal = 25;
                     }
-
                     if ((enemy.currentHealth - damageToDeal) <= 0)
                     {
-                        if (enemy.colour == "purple")
+                        if (enemy.colour == "green")
                         {
                             GameController.Instance.AddPoints(2, 1);
                         }
@@ -91,7 +91,7 @@ public class MeleeController : MonoBehaviour
                         {
                             GameController.Instance.AddPoints(3, 1);
                         }
-                        else if (enemy.colour == "green")
+                        else if (enemy.colour == "purple")
                         {
                             GameController.Instance.AddPoints(1, 1);
                         }

@@ -6,7 +6,6 @@ public class EnemySpawner : EnemyDefault
 {
     public GameObject enemyPrefab;
     public float spawnInterval = 3f;
-
     private float timer;
 
     void Start()
@@ -18,12 +17,16 @@ public class EnemySpawner : EnemyDefault
 
     void Update()
     {
-        timer -= Time.deltaTime;
-
-        if (timer <= 0f)
+        float distanceToTarget = Vector3.Distance(transform.position, target.position);
+        if (distanceToTarget <= giveUpLength)
         {
-            SpawnEnemy();
-            timer = spawnInterval;
+            timer -= Time.deltaTime;
+
+            if (timer <= 0f)
+            {
+                SpawnEnemy();
+                timer = spawnInterval;
+            }
         }
     }
 

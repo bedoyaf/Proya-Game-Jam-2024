@@ -56,14 +56,14 @@ public class BulletController : MonoBehaviour
             if (enemy != null)
             {
 
-                int damageToDeal = 5;
+                int damageToDeal = 8;
                 if (enemy.colour == "red")
                 {
-                    damageToDeal = 20;
+                    damageToDeal = 25;
                 }
-                if ((enemy.currentHealth-damageToDeal)<=0)
+                if ((enemy.currentHealth - damageToDeal) <= 0)
                 {
-                    if (enemy.colour == "purple")
+                    if (enemy.colour == "green")
                     {
                         GameController.Instance.AddPoints(2, 1);
                     }
@@ -71,7 +71,7 @@ public class BulletController : MonoBehaviour
                     {
                         GameController.Instance.AddPoints(3, 1);
                     }
-                    else if (enemy.colour == "green")
+                    else if (enemy.colour == "purple")
                     {
                         GameController.Instance.AddPoints(1, 1);
                     }

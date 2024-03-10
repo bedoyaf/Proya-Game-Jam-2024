@@ -391,7 +391,9 @@ MonoBehaviour:
   colour: white
   healthBarSlider: {fileID: 336796446776645742}
   target: {fileID: 4286068518728577319, guid: 438ddb13e4defe64097dc558c5519b90, type: 3}
+  spawnLocation: {x: 0, y: 0, z: 0}
   isIdling: 1
+  giveUpLength: 14
   bombPrefab: {fileID: 7692309770397346674, guid: 0436caf27fd07c843b8d202a8883b50d, type: 3}
   bombPlantingDistance: 2
   safeDistance: 2

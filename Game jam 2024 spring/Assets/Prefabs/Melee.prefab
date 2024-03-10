@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3038892557172748221}
   - component: {fileID: 1210481068792334909}
   - component: {fileID: 2941501078283631813}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Melee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3749055278615734696}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -105,7 +105,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.64, y: 1}
+  m_Size: {x: 4.17, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &1210481068792334909
 MonoBehaviour:

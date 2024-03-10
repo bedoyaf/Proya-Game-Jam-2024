@@ -62,7 +62,7 @@ public class BombController : MonoBehaviour
                     if (player != null)
                     {
                         // Call the TakeDamage method
-                        player.TakeDamage(10);
+                        player.TakeDamage(5);
                     }
 
 
@@ -71,14 +71,14 @@ public class BombController : MonoBehaviour
                     // Check if the object has the EnemyDefault component
                     if (enemy != null)
                     {
-                        int damageToDeal = 5;
+                        int damageToDeal = 2;
                         if (enemy.colour == "green")
                         {
-                            damageToDeal = 20;
+                            damageToDeal = 25;
                         }
                         if ((enemy.currentHealth - damageToDeal) <= 0)
                         {
-                            if (enemy.colour == "purple")
+                            if (enemy.colour == "green")
                             {
                                 GameController.Instance.AddPoints(2, 1);
                             }
@@ -86,7 +86,7 @@ public class BombController : MonoBehaviour
                             {
                                 GameController.Instance.AddPoints(3, 1);
                             }
-                            else if (enemy.colour == "green")
+                            else if (enemy.colour == "purple")
                             {
                                 GameController.Instance.AddPoints(1, 1);
                             }

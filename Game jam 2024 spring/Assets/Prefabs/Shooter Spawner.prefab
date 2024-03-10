@@ -227,8 +227,10 @@ MonoBehaviour:
   currentHealth: 0
   colour: white
   healthBarSlider: {fileID: 2449824338608243346}
-  target: {fileID: 0}
+  target: {fileID: 4286068518728577319, guid: 438ddb13e4defe64097dc558c5519b90, type: 3}
+  spawnLocation: {x: 0, y: 0, z: 0}
   isIdling: 1
+  giveUpLength: 10
   enemyPrefab: {fileID: 7086444327232042381, guid: 606e828e5c8ff0b4a898f207f1ce8b00, type: 3}
   spawnInterval: 8
 --- !u!1 &8098561542941919323
