@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
+    // Declare an array to hold Animator Controllers
+
     public float health = 100;
     public HealthBarController healthbar;
     public float speed = 5f;
@@ -50,12 +52,12 @@ public class PlayerController : MonoBehaviour
         bool isMoving = Mathf.Abs(horizontal) > 0 || Mathf.Abs(vertical) > 0;
           if (isMoving)
           {
-              animator.SetBool("Runner",true);
+              animator.SetBool("running",true);
           }
           else 
           {
             //Debug.Log("nehybu se");
-              animator.SetBool("Runner",false);
+              animator.SetBool("running",false);
           }
         
         if (Input.GetButtonDown("Fire1")) // Change "Fire1" to your preferred input axis
