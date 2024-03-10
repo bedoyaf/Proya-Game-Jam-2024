@@ -30,7 +30,14 @@ public class EnemyExploding : EnemyDefault
     // Update is called once per frame
     void Update()
     {
-
+        float distanceToTarget = Vector3.Distance(transform.position, target.position);
+        if (distanceToTarget > giveUpLength)
+        {
+            Debug.Log(spawnLocation);
+            agent.SetDestination(spawnLocation);
+        }
+        else
+        {
             // If bomb cooldown is over, reset the cooldown and plant a bomb
             if (explosionTimer <= 0f)
             {
@@ -61,7 +68,7 @@ public class EnemyExploding : EnemyDefault
                 }
 
                 // Check if the enemy is close enough to the player to plant the bomb
-                if (Vector3.Distance(transform.position, target.position) <= bombPlantingDistance)
+                if (distanceToTarget <= bombPlantingDistance)
                 {
                     hasPlantedBomb = true;
                     explosionTimer = explosionCooldown;
@@ -81,6 +88,7 @@ public class EnemyExploding : EnemyDefault
             }
             float diroflooking = -transform.position.x + target.position.x;
             FlipSprite(diroflooking);
+        }
         
     }
     void FlipSprite(float horizontal)

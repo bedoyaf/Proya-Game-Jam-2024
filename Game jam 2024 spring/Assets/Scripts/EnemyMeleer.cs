@@ -32,47 +32,54 @@ public class EnemyMelee : EnemyDefault
 
         bool hasObstacle = HasObstaclesInFrontOfEnemy();
         // Debug.Log(hasObstacle);
-
-        if (isIdling)
+        if (distanceToTarget > giveUpLength)
         {
-            if (hasObstacle)
-            {
-                agent.isStopped = true;
-            }
-            else
-            {
-                agent.isStopped = false;
-                agent.SetDestination(target.position);
-                isIdling = false;
-                isattacking = true;
-            }
+            //Debug.Log(spawnLocation);
+            agent.SetDestination(spawnLocation);
         }
         else
         {
-            if (distanceToTarget > attackingRange || hasObstacle)
+            if (isIdling)
             {
-                agent.isStopped = false;
-                agent.SetDestination(target.position);
-                isIdling = false;
-                isattacking = false;
+                if (hasObstacle)
+                {
+                    agent.isStopped = true;
+                }
+                else
+                {
+                    agent.isStopped = false;
+                    agent.SetDestination(target.position);
+                    isIdling = false;
+                    isattacking = true;
+                }
             }
             else
             {
-                agent.isStopped = true;
-                isattacking = true;
+                if (distanceToTarget > attackingRange || hasObstacle)
+                {
+                    agent.isStopped = false;
+                    agent.SetDestination(target.position);
+                    isIdling = false;
+                    isattacking = false;
+                }
+                else
+                {
+                    agent.isStopped = true;
+                    isattacking = true;
+                }
             }
-        }
 
-        if (isattacking)
-        {
-            if (attackTimer <= 0f)
+            if (isattacking)
             {
-                Attack();
-                attackTimer = attackingCooldown; // Reset the cooldown timer
-            }
-            else
-            {
-                attackTimer -= Time.deltaTime; // Decrease the cooldown timer
+                if (attackTimer <= 0f)
+                {
+                    Attack();
+                    attackTimer = attackingCooldown; // Reset the cooldown timer
+                }
+                else
+                {
+                    attackTimer -= Time.deltaTime; // Decrease the cooldown timer
+                }
             }
         }
     }

@@ -28,7 +28,7 @@ public class EnemyShooter : EnemyDefault
         float distanceToTarget = Vector3.Distance(transform.position, target.position);
         if (distanceToTarget > giveUpLength)
         {
-            Debug.Log(spawnLocation);
+            //Debug.Log(spawnLocation);
             agent.SetDestination(spawnLocation);
         }
         else
