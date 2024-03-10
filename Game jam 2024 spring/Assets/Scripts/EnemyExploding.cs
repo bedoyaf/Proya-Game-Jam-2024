@@ -56,7 +56,6 @@ public class EnemyExploding : EnemyDefault
                 }
                 else
                 {
-                    //Debug.Log("KILL "+ target.position);
                     agent.isStopped = false;
                     agent.SetDestination(target.position);
                 }
@@ -72,7 +71,6 @@ public class EnemyExploding : EnemyDefault
             // If bomb is already planted, run away
             else
             {
-                //Debug.Log("Run");
                 Vector3 directionToPlayer = (transform.position - target.position).normalized;
                 Vector3 directionToBomb = (transform.position - lastBombPosition).normalized;
                 Vector3 safeDirection = (directionToPlayer + directionToBomb).normalized;
