@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     private bool idle=true;
     private bool showMenu = false;
     public string colour = string.Empty;
+    public AudioSource Source;
+    public AudioClip GameOverClip;
 
     public float delayBetweenShots = 0.5f; // Adjust this value to set the delay between shots
     private float lastShotTime;
@@ -110,6 +112,8 @@ public class PlayerController : MonoBehaviour
 
     protected virtual void Die()
     {
+        Source.clip = GameOverClip;
+        Source.Play();
         Destroy(gameObject);
     }
 
