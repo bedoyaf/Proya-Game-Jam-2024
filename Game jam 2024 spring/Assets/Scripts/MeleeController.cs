@@ -49,13 +49,13 @@ public class MeleeController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("layer name" + collision.gameObject.layer);
+        //Debug.Log("layer name" + collision.gameObject.layer);
         // Check if the collision is not with the Player or Bullet layer
-        if (collision.gameObject.layer != LayerMask.NameToLayer(layerOwner) && collision.gameObject.layer != LayerMask.NameToLayer("Bullet"))
+        if (collision.gameObject.layer != LayerMask.NameToLayer(layerOwner))
         {
             if (layerOwner == "Enemy")
             {
-                Debug.Log("Its Enemy");
+                //Debug.Log("Its Enemy");
                 PlayerController player = collision.gameObject.GetComponent<PlayerController>();
 
                 if (player != null)

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1210481068792334909}
   - component: {fileID: 2941501078283631813}
   - component: {fileID: 6297003715948736353}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: EvilMelee
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -57,6 +57,14 @@ public class BombController : MonoBehaviour
                 {
 
                     // ADD PLAYER DAMAGE 
+                    PlayerController player = hitCollider.gameObject.GetComponent<PlayerController>();
+
+                    if (player != null)
+                    {
+                        // Call the TakeDamage method
+                        player.TakeDamage(10);
+                    }
+
 
                     EnemyDefault enemy = hitCollider.gameObject.GetComponent<EnemyDefault>();
 

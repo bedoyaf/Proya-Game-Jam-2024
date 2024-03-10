@@ -47,8 +47,15 @@ public class EnemyBullet: MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-       if (collision.gameObject.layer != LayerMask.NameToLayer("Enemy") && collision.gameObject.layer != LayerMask.NameToLayer("Bullet"))
-       {
+        if (collision.gameObject.layer != LayerMask.NameToLayer("Enemy") && collision.gameObject.layer != LayerMask.NameToLayer("Bullet"))
+        {
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+
+            if (player != null)
+            {
+                // Call the TakeDamage method
+                player.TakeDamage(5);
+            }
             // Destroy the bullet on collision with anything other than the Player layer
             Destroy(gameObject);
        }

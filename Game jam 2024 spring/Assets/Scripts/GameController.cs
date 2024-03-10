@@ -63,7 +63,7 @@ public class GameController : MonoBehaviour
     }
     void Update()
     {
-        if (purplePoints >= 5)
+        if (purplePoints >= 5 && player.colour != "purple")
         {
             player.colour = "purple";
             player.ChangeSpriteColor(Color.magenta);
@@ -71,7 +71,7 @@ public class GameController : MonoBehaviour
             timer.ResetTimer();
             scoreManager.UpdateScoreUI(purplePoints, greenPoints, redPoints);
         }
-        if (greenPoints >= 5)
+        if (greenPoints >= 5 && player.colour != "green")
         {
             player.colour = "green";
             player.ChangeSpriteColor(Color.green);
@@ -79,7 +79,7 @@ public class GameController : MonoBehaviour
             timer.ResetTimer();
             scoreManager.UpdateScoreUI(purplePoints, greenPoints, redPoints);
         }
-        if (redPoints >= 5)
+        if (redPoints >= 5 && player.colour != "red")
         {
             player.colour = "red";
             player.ChangeSpriteColor(Color.red);

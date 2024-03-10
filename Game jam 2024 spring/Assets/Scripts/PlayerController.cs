@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour
         {
             health -= damage;
         }
+        healthbar.SetHealth(health);
         Debug.Log("Player:"+health);
     }
 
