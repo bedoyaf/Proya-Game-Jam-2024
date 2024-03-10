@@ -92,12 +92,12 @@ public class EnemyShooter : EnemyDefault
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 
-        if (horizontal < 0)
+        if (horizontal > 0)
         {
             // Moving left, flip the sprite
             spriteRenderer.flipX = true;
         }
-        else if (horizontal > 0)
+        else if (horizontal < 0)
         {
             // Moving right, restore the sprite to its original orientation
             spriteRenderer.flipX = false;
