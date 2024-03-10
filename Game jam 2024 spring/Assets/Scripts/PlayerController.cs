@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     Animator animator ;
     private bool idle=true;
     public string colour = string.Empty;
+
+    public float delayBetweenShots = 0.5f; // Adjust this value to set the delay between shots
+    private float lastShotTime;
     void Start()
     {
         rb.freezeRotation = true;
@@ -56,16 +59,34 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetButtonDown("Fire1")) // Change "Fire1" to your preferred input axis
         {
-            Shoot();
+            if (Time.time - lastShotTime > delayBetweenShots)
+            {
+                // Your shooting logic goes here
+                Shoot();
+                // Update the last shot time
+                lastShotTime = Time.time;
+            }
         }
         if (Input.GetButtonDown("Fire2")) // Change "Fire1" to your preferred input axis
         {
-            Melee();
+            if (Time.time - lastShotTime > delayBetweenShots)
+            {
+                // Your shooting logic goes here
+                Melee();
+                // Update the last shot time
+                lastShotTime = Time.time;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            DropBomb();
+            if (Time.time - lastShotTime > delayBetweenShots)
+            {
+                // Your shooting logic goes here
+                DropBomb();
+                // Update the last shot time
+                lastShotTime = Time.time;
+            }
         }
 
     }

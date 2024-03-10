@@ -16,7 +16,7 @@ public class EnemyDefault : MonoBehaviour
         currentHealth = maxHealth;
 
         UpdateHealthBar();
-        Debug.Log(healthBarSlider.value);
+       // Debug.Log(healthBarSlider.value);
     }
 
     public virtual void TakeDamage(int damage)

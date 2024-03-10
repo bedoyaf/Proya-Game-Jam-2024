@@ -9,7 +9,7 @@ public class BulletController : MonoBehaviour
     public Rigidbody2D rb;
     Vector3 originalPosition;
     public float despawnDistance = 10f;
-    public Collider2D collider;
+   // public Collider2D collider;
     public GameObject owner;
     public GameObject shootingEnemy;
     public GameObject meleeEnemy;
