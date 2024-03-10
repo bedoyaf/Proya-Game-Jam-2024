@@ -75,7 +75,7 @@ public class BombController : MonoBehaviour
                     // Check if the object has the EnemyDefault component
                     if (enemy != null)
                     {
-                        int damageToDeal = 2;
+                        int damageToDeal = 1;
                         if (enemy.colour == "green")
                         {
                             damageToDeal = 25;
