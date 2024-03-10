@@ -104,27 +104,12 @@ public class PlayerController : MonoBehaviour
             health -= damage;
         }
         healthbar.SetHealth(health);
-        Debug.Log("Player:"+health);
+      //  Debug.Log("Player:"+health);
     }
 
     void MovePlayer(Vector2 moveDirection)
     {
         rb.velocity = new Vector2(moveDirection.x * speed, moveDirection.y * speed);
-        /*    RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, 0.1f, LayerMask.GetMask("Walls"));
-
-            // If there's no collision with the Tilemap, move the player
-            if (hit.collider == null || !hit.collider.CompareTag("Wall"))
-            {
-                rb.velocity = new Vector2(moveDirection.x * speed, moveDirection.y * speed);
-            }
-            else
-            {
-                Debug.Log("Hit layer: " + hit.collider.gameObject.layer);
-                Debug.Log("Hit tag: " + hit.collider.tag);
-                // Handle collision with the wall (optional)
-                // For example, stop the player or play a sound
-                rb.velocity = Vector2.zero;
-            }*/
     }
     void Shoot()
     {
@@ -156,12 +141,6 @@ public class PlayerController : MonoBehaviour
             mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
             Vector2 meleeDirection = (mousePosition - transform.position).normalized;
-
-
-            // Set the distance you want the melee object to be spawned from the player
-            //float meleeDistance = 1.0f; // Adjust this value as needed
-
-            // Calculate the position where the melee object should be spawned
             Vector3 spawnPosition = transform.position + new Vector3(meleeDirection.x, meleeDirection.y, 0f);//* meleeDistance;
             float bulletSpeed = rb.velocity.magnitude;//*dotProduct;
                                                       // Instantiate the melee object at the calculated position

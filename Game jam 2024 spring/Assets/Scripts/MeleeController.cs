@@ -31,9 +31,8 @@ public class MeleeController : MonoBehaviour
 
     public void SetDirection(Vector2 direction, Vector3 _originalPosition, Vector3 newposition,float additionalbulletSpeed)
     {
-
-       // float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-     //   transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        // float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        //   transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         angle += -90f;
@@ -47,29 +46,31 @@ public class MeleeController : MonoBehaviour
         originalPosition = _originalPosition;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log("layer name" + collision.gameObject.layer);
-        // Check if the collision is not with the Player or Bullet layer
-        if (collision.gameObject.layer != LayerMask.NameToLayer(layerOwner))
+        // Debug.Log("Trigger entered?");
+        // Debug.Log("layer name" + other.gameObject.layer);
+
+        // Check if the trigger is not with the Player or Bullet layer
+        if (other.gameObject.layer != LayerMask.NameToLayer(layerOwner))
         {
             if (layerOwner == "Enemy")
             {
-                //Debug.Log("Its Enemy");
-                PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+                // Debug.Log("It's Enemy");
+                PlayerController player = other.gameObject.GetComponent<PlayerController>();
 
                 if (player != null)
                 {
                     // Call the TakeDamage method
                     player.TakeDamage(5);
                 }
-                Destroy(gameObject);
-                
+                // Destroy(gameObject);
             }
             else
             {
+               // Debug.Log("I shot and I'm a player");
                 // Get the component that contains the TakeDamage method
-                EnemyDefault enemy = collision.gameObject.GetComponent<EnemyDefault>();
+                EnemyDefault enemy = other.gameObject.GetComponent<EnemyDefault>();
 
                 // Check if the object has the EnemyDefault component
                 if (enemy != null)
@@ -79,6 +80,7 @@ public class MeleeController : MonoBehaviour
                     {
                         damageToDeal = 20;
                     }
+
                     if ((enemy.currentHealth - damageToDeal) <= 0)
                     {
                         if (enemy.colour == "purple")
@@ -97,8 +99,9 @@ public class MeleeController : MonoBehaviour
 
                     // Call the TakeDamage method
                     enemy.TakeDamage(damageToDeal);
+                    // Destroy(gameObject);
                 }
-                Destroy(gameObject);
+                // Destroy(gameObject);
             }
         }
     }
