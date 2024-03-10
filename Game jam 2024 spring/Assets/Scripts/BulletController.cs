@@ -6,6 +6,8 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     // Start is called before the first frame update
+    public AudioSource audioSource;
+    public AudioClip clip;
     public Rigidbody2D rb;
     Vector3 originalPosition;
     public float despawnDistance = 10f;
@@ -16,6 +18,8 @@ public class BulletController : MonoBehaviour
     public GameObject explosiveEnemy;
     void Start()
     {
+        audioSource.clip = clip;
+        audioSource.Play();
     }
 
     // Update is called once per frame
