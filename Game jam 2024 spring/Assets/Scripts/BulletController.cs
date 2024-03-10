@@ -63,7 +63,7 @@ public class BulletController : MonoBehaviour
                 int damageToDeal = 8;
                 if (enemy.colour == "red")
                 {
-                    damageToDeal = 25;
+                    damageToDeal = 50;
                 }
                 if ((enemy.currentHealth - damageToDeal) <= 0)
                 {
